@@ -1,0 +1,31 @@
+body {
+  font-size: large;
+  font-family: "Raleway", sans-serif;
+}
+
+.square {
+  height: 110px;
+  width: 110px;
+  display: inline-block;
+  border: 2px solid black;
+   
+  
+}
+
+#matrix{
+
+  margin-left: 25%;
+    
+   
+    bottom:20px;
+    
+}
+  
+
+
+#score1, #score2{
+    display: inline-block;
+    margin-left: 2%;
+}
+ 
+

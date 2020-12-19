@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Rush</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+
+   
+    <div class="container">
+        <input type="text" id="rows" placeholder="Enter number of rows">
+        <input type="text" id="columns" placeholder="Enter number of columns"> 
+        <button>Play</button>
+        <div id="score1"></div>
+        <div id="score2"></div>
+        <div id="matrix"></div>
+      
+    </div>
+   
+  
+    
+
+    <script id="matrix-template" type="text/x-handlebars-template">
+        {{#each matrix}}
+      <div class="matrix" >
+           {{#each this}}
+        <div class="square">{{this}}</div>
+       {{/each}}
+    
+    </div>
+ {{/each}}
+
+ </script>
+ <script id="score1-template" type="text/x-handlebars-template">
+     <div>Player 1 score: {{score1}}</div>
+</script>
+
+</script>
+<script id="score2-template" type="text/x-handlebars-template">
+    <div> Player 2 score:  {{score2}}</div>
+</script>
+
+
+    <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="Matrix.js"></script>
+    <script src="GoldRush.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"> </script>
+</body>
+
+</html>
