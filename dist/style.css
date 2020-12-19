@@ -3,21 +3,23 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
+.container{
+  width: 80%;
+  height: 80%;
+}
+
 .square {
   height: 110px;
   width: 110px;
   display: inline-block;
   border: 2px solid black;
-   
-  
+ 
 }
 
 #matrix{
 
   margin-left: 25%;
-    
-   
-    bottom:20px;
+  position: absolute;
     
 }
   

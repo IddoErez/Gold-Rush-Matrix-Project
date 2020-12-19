@@ -1,48 +1,49 @@
 /* Write your code below */
 // const Matrix = require('./Matrix')
-
 class GoldRush extends Matrix {
     constructor(rowNum, columnNum) {
         super(rowNum, columnNum)
         this.players = [{ num: 1, score: 0 }, { num: 2, score: 0 }]
-        this.numC = 0
-        this.numWall = 0
+        this.numC = 7
+        this.numWall = 4
+        this.rowNum = parseInt(rowNum)
+        this.columnNum = parseInt(rowNum)
 
     }
     loadBoard() {
-        // for (let i = 0; i < 5; i++) {
-        //     this.matrix.push([])
-        //     for (let j = 0; j < 5; j++) {
-        //         this.matrix[i].push(".")
-        //     }
-        // }
-        // console.log(this.matrix)
-        for (let c = 0; c < 5; c++) {
-            let randomRow = Math.floor(Math.random() * Math.floor(5))
-            let randomColumn = Math.floor(Math.random() * Math.floor(5))
-            if (this.matrix[randomRow][randomColumn] === ".") {
-                this.matrix[randomRow][randomColumn] = "Wall"
-                this.numWall++
-            }
-        }
         this.matrix[0][0] = this.players[1].num
-        this.matrix[4][4] = this.players[0].num
-        for (let c = 0; c < 20; c++) {
-            let randomRow = Math.floor(Math.random() * Math.floor(5))
-            let randomColumn = Math.floor(Math.random() * Math.floor(5))
-            if (this.matrix[randomRow][randomColumn] === ".") {
-                this.matrix[randomRow][randomColumn] = "c"
-                this.numC++
-                if (this.numC === 7) {
-                    return this.matrix
-                }
+        this.matrix[this.rowNum - 1][this.columnNum - 1] = this.players[0].num
+        let boardLoaded = false
+        let wallsRemain = this.numWall
+        let coinsRemain = this.numC
+        while (!boardLoaded) {
+            let randomRowWall = Math.floor(Math.random() * Math.floor(this.rowNum))
+            let randomColumnWall = Math.floor(Math.random() * Math.floor(this.columnNum))
+            if (this.matrix[randomRowWall][randomColumnWall] === "." && wallsRemain > 0) {
+                this.matrix[randomRowWall][randomColumnWall] = "Wall"
+                wallsRemain--
             }
+            let randomRowCoin = Math.floor(Math.random() * Math.floor(this.rowNum))
+            let randomColumnCoin = Math.floor(Math.random() * Math.floor(this.columnNum))
+            if (this.matrix[randomRowCoin][randomColumnCoin] === "." && coinsRemain > 0) {
+                this.matrix[randomRowCoin][randomColumnCoin] = "c"
+                coinsRemain--
+            }
+            boardLoaded = wallsRemain === 0 && coinsRemain === 0    
         }
+        return this.matrix
     }
     alertWinnerStartOver(player) {
+        let self = this
         setTimeout(() => {
-            alert(`The winner is player ${player}. \n  To play again please refresh and press play`)
-        }, 7)
+            alert(`The winner is player ${player}. \n  Enjoyed? refresh, choose board size and press play`)
+            self.generateMatrix(self.rowNum, self.columnNum)
+            self.loadBoard()
+            renderWin.renderBoard(board.matrix)
+            renderWin.renderScore1(board.players[1].score)
+            renderWin.renderScore1(board.players[1].score)
+        }, 2)
+
     }
     otherPlayer(i, j) {
         if (this.matrix[i][j] === 1 || this.matrix[i][j] === 2) {
@@ -134,7 +135,6 @@ class GoldRush extends Matrix {
         return
     }
 }
-
 
 
 //prints

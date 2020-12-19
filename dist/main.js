@@ -1,26 +1,14 @@
 let render = new Renderer()
-let board = new GoldRush(5,5)
-
-
-
-// const loadPage = () => {
-//     board.loadBoard()
-//     render.renderBoard(board.matrix)
-//     render.renderScore1(board.players[0].score)
-//     render.renderScore2(board.players[1].score)
-// }
-// loadPage()
+let board
 
 $("button").on("click", ()=>{
-    // let rows = $("#rows").val()
-    // let columns= $("#columns").val()
-    // let board = new GoldRush(rows, columns)
-    // board.generateMatrix(rows,columns)
-    
+    let rows = $("#rows").val()
+    let columns= $("#columns").val()
+    board = new GoldRush(rows, columns)
     board.loadBoard()
     render.renderBoard(board.matrix)
-    render.renderScore1(board.players[0].score)
-    render.renderScore2(board.players[1].score)   
+    render.renderScore1(board.players[1].score)
+    render.renderScore2(board.players[0].score)   
 })
 
 $(document).keypress(function (e) {

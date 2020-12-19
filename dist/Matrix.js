@@ -1,10 +1,9 @@
 class Matrix {
-    constructor(rowNum, columnNum) {
-        this.matrix = this.generateMatrix(rowNum, columnNum)
+    constructor(numRows, numColumns) {
+        this.matrix = this.generateMatrix(numRows, numColumns)
     }
     generateMatrix(numRows, numColumns) {
         let matrix = []
-        // let num = 1
         for (let i = 0; i < numRows; i++) {
             matrix.push([])
             for (let j = 0; j < numColumns; j++) {
@@ -25,7 +24,6 @@ class Matrix {
         }
     }
 
-
     printColumn(colNum) {
         for (let i = 0; i < this.matrix.length; i++) {
             console.log(this.matrix[i][colNum])
@@ -37,7 +35,6 @@ class Matrix {
             line += this.matrix[RowNum][j] + "\t"
 
         }
-        // console.log(line)
     }
     alter(RowNum, colNum, num) {
         this.matrix[RowNum][colNum] = num
@@ -62,4 +59,3 @@ class Matrix {
     }
 }
 
-// module.exports = Matrix
