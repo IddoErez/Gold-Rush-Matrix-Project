@@ -10,10 +10,12 @@ class GoldRush extends Matrix {
     loadBoard() {
         this.matrix[0][0] = this.players[1].num
         this.matrix[this.rowNum - 1][this.columnNum - 1] = this.players[0].num
+
         let boardLoaded = false
         let wallsRemain = this.numWall
-        let coinsRemain
-        this.numC % 2 == 0 ? coinsRemain = this.numC-1 : coinsRemain = this.numC
+        let coinsRemain //Checking if number of coins is odd, to ensure a winner:
+        this.numC % 2 == 0 ? coinsRemain = this.numC-1 : coinsRemain = this.numC 
+        // Creating new playing board:
         while (!boardLoaded) {
             let randomRowWall = Math.floor(Math.random() * Math.floor(this.rowNum))
             let randomColumnWall = Math.floor(Math.random() * Math.floor(this.columnNum))
@@ -31,20 +33,24 @@ class GoldRush extends Matrix {
         }
         return this.matrix
     }
-    alertWinnerStartOver(player) {
-        let self = this
-        setTimeout(() => {
-            alert(`The winner is player ${player}. \n  Enjoyed? refresh, choose board size and press play`)
-        }, 2)
 
-    }
+    alertWinnerStartOver(player) {
+            setTimeout(() => {
+            alert(`The winner is player ${player}! \n Enjoyed? To play again please press ok and play`)
+            $("#matrix").empty()
+          }, 400)
+     
+        }
+    
     otherPlayer(i, j) {
         if (this.matrix[i][j] === 1 || this.matrix[i][j] === 2) {
             return true
         }
     }
     winner(player) {
-        if (player.score > (this.numC * 10) / 2) { return true }
+        let totalScore 
+        this.numC % 2 == 0 ? totalScore = 10*(this.numC-1) : totalScore = 10*(this.numC)
+        if (player.score > (totalScore) / 2) { return true }
     }
     wall(i, j) {
         if (this.matrix[i][j] === "Wall") { return true }
