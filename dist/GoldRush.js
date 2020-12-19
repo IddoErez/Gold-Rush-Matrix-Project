@@ -1,21 +1,19 @@
-/* Write your code below */
-// const Matrix = require('./Matrix')
 class GoldRush extends Matrix {
     constructor(rowNum, columnNum) {
         super(rowNum, columnNum)
         this.players = [{ num: 1, score: 0 }, { num: 2, score: 0 }]
-        this.numC = 7
-        this.numWall = 4
         this.rowNum = parseInt(rowNum)
         this.columnNum = parseInt(rowNum)
-
+        this.numC = Math.round(0.33 * (parseInt(rowNum) * parseInt(rowNum)))
+        this.numWall = Math.round(0.2 * (parseInt(rowNum) * parseInt(rowNum)))
     }
     loadBoard() {
         this.matrix[0][0] = this.players[1].num
         this.matrix[this.rowNum - 1][this.columnNum - 1] = this.players[0].num
         let boardLoaded = false
         let wallsRemain = this.numWall
-        let coinsRemain = this.numC
+        let coinsRemain
+        this.numC % 2 == 0 ? coinsRemain = this.numC-1 : coinsRemain = this.numC
         while (!boardLoaded) {
             let randomRowWall = Math.floor(Math.random() * Math.floor(this.rowNum))
             let randomColumnWall = Math.floor(Math.random() * Math.floor(this.columnNum))
@@ -29,7 +27,7 @@ class GoldRush extends Matrix {
                 this.matrix[randomRowCoin][randomColumnCoin] = "c"
                 coinsRemain--
             }
-            boardLoaded = wallsRemain === 0 && coinsRemain === 0    
+            boardLoaded = wallsRemain === 0 && coinsRemain === 0
         }
         return this.matrix
     }
@@ -37,11 +35,6 @@ class GoldRush extends Matrix {
         let self = this
         setTimeout(() => {
             alert(`The winner is player ${player}. \n  Enjoyed? refresh, choose board size and press play`)
-            self.generateMatrix(self.rowNum, self.columnNum)
-            self.loadBoard()
-            renderWin.renderBoard(board.matrix)
-            renderWin.renderScore1(board.players[1].score)
-            renderWin.renderScore1(board.players[1].score)
         }, 2)
 
     }
@@ -136,49 +129,4 @@ class GoldRush extends Matrix {
     }
 }
 
-
-//prints
-// .       .       .
-// .       .       .
-// .       .       .
-
-// let board = new TicTacToe()
-// board.loadBoard()
-
-// board.play(0, 0, 1)
-// board.play(4, 4, 2)
-
-        // board.movePlayer(1, "down") //this method should be defined inside of GoldRush
-        // board.movePlayer(2, "left")
-        // board.movePlayer(2, "up")
-        // board.movePlayer(1, "right") //this method should be defined inside of GoldRush
-        // board.movePlayer(1, "right") //this method should be defined inside of GoldRush
-// board.movePlayer(1, "up") //this method should be defined inside of GoldRush
-// // board.movePlayer(2, "left")
-
-
-
-// console.log(board.players[0].score) //prints 0
-// const board = new GoldRush()
-// console.log(board.player1.score) //prints 0
-// board.print() 
-// board.print()
-
-
-// board.movePlayer(1, "down")
-// console.log(board.player1.score) 
-// board.print()
-// // prints
-// o       .       .
-// .       .       .
-// .       .       x
-
-
-// board.play(2, 2, 1)
-// board.play(0, 0, 2)
-// board.play(0, 2, 1)
-// board.play(1, 0, 2)
-// board.play(1, 2, 1) //prints Congratulations Player 1
-
-// module.exports = GoldRush
 
