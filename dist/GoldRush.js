@@ -39,7 +39,7 @@ class GoldRush extends Matrix {
             alert(`The winner is player ${player}! \n Enjoyed? To play again please press ok and play`)
             $("#matrix").empty()
           }, 400)
-     
+            
         }
     
     otherPlayer(i, j) {
