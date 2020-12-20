@@ -1,0 +1,36 @@
+body {
+  font-size: large;
+  font-family: "Raleway", sans-serif;
+}
+
+.container{
+  width: 80%;
+  height: 80%;
+}
+
+.square {
+
+  border: 2px solid black;
+ 
+}
+
+.matrix {
+  width: 100%;
+  display: grid;
+}
+
+#matrix{
+  padding-top: 2vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  display: grid;
+  height: 85vh;
+  width: 100%;
+}
+  
+#score1, #score2{
+    display: inline-block;
+    margin-left: 2%;
+}
+ 
+
