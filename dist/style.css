@@ -9,22 +9,25 @@ body {
 }
 
 .square {
-  height: 110px;
-  width: 110px;
-  display: inline-block;
+
   border: 2px solid black;
  
 }
 
-#matrix{
+.matrix {
+  width: 100%;
+  display: grid;
+}
 
-  margin-left: 25%;
-  position: absolute;
-    
+#matrix{
+  padding-top: 2vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  display: grid;
+  height: 85vh;
+  width: 100%;
 }
   
-
-
 #score1, #score2{
     display: inline-block;
     margin-left: 2%;

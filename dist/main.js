@@ -7,6 +7,8 @@ $("button").on("click", ()=>{
     board = new GoldRush(rows, columns)
     board.loadBoard()
     render.renderBoard(board.matrix)
+    $("#matrix").css("grid-template-rows", `repeat(${rows}, 1fr)`)
+    $(".matrix").css("grid-template-columns", `repeat(${columns}, 1fr`)
     render.renderScore1(board.players[1].score)
     render.renderScore2(board.players[0].score)   
 })
